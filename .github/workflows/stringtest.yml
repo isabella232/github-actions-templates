@@ -8,5 +8,7 @@ jobs:
         - "algolia"
         - "instantsearch"
     steps:
-      - run: echo "${{ matrix.tag }}"
+      - run: echo "${{ matrix.tag }} - ${{ env.TEST_VAR }}"
       - run: npx @orbit-love/stackoverflow --questions --answers --hours=300 --tag ${{ matrix.tag }}
+        env:
+          TEST_VAR: "hi"
