@@ -9,11 +9,12 @@ jobs:
     strategy:
       matrix:
         tag:
-        - ${{ secrets.STACKOVERFLOW_TAG }}
+        - algolia
         - instantsearch
     steps:
-      - run: npx @orbit-love/stackoverflow --questions --answers --hours=300 --tag "${{ matrix.tag }}"
+      - run: npx @orbit-love/stackoverflow --questions --answers --hours=300 --tag "${{ env.STACKOVERFLOW_TAGS }}"
         env:
           ORBIT_WORKSPACE_ID: ${{ secrets.ORBIT_WORKSPACE_ID }}
           ORBIT_API_KEY: ${{ secrets.ORBIT_API_KEY }}
           STACK_APPS_KEY: ${{ secrets.STACK_APPS_KEY }}
+          STACKOVERFLOW_TAGS: ${{ matrix.tag }}
