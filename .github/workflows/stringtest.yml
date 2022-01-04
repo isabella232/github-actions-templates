@@ -1,4 +1,3 @@
-name: push Check for New Stackoverflow Questions and Add to Orbit
 on: push
 jobs:
   main:
@@ -9,10 +8,10 @@ jobs:
         - "algolia"
         - "instantsearch"
     steps:
+      - run: echo "${{ matrix.tag }}"
       - run: npx @orbit-love/stackoverflow --questions --answers --hours=300 --tag ${{ matrix.tag }}
         env:
           ORBIT_WORKSPACE_ID: ${{ secrets.ORBIT_WORKSPACE_ID }}
           ORBIT_API_KEY: ${{ secrets.ORBIT_API_KEY }}
           STACK_APPS_KEY: ${{ secrets.STACK_APPS_KEY }}
           STACKOVERFLOW_TAGS: "algolia"
-      - run: echo ${{ matrix.tag }}
