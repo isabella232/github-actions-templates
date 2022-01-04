@@ -1,8 +1,5 @@
-name: Test Check for New Stackoverflow Questions and Add to Orbit
-on:
-  schedule:
-    - cron: "0 * * * *"
-  workflow_dispatch:
+name: push Check for New Stackoverflow Questions and Add to Orbit
+on: push
 jobs:
   main:
     runs-on: ubuntu-latest
