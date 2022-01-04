@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         tag:
-        - algolia
+        - "algolia"
         - instantsearch
     steps:
       - run: npx @orbit-love/stackoverflow --questions --answers --hours=300 --tag "${{ matrix.tag }}"
